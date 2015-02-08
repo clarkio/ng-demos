@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html data-ng-app="app">
 <head>
     <style>
@@ -13,11 +13,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
+    <!-- inject-vendor:css -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/bower_components/toastr/toastr.css" rel="stylesheet" />
-    <link href="/content/customtheme.css" rel="stylesheet">
-    <link href="/content/styles.css" rel="stylesheet" />
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link href="/src/client/content/customtheme.css" rel="stylesheet">
+    <link href="/src/client/content/styles.css" rel="stylesheet" />
+    <!-- endinject -->
 </head>
 <body>
     <div>
@@ -36,7 +41,7 @@
 
     <span data-cc-scroll-to-top></span>
 
-    <!-- Vendor Scripts -->
+    <!-- inject-vendor:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
@@ -47,7 +52,9 @@
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/spin.js/spin.js"></script>
+    <!-- endinject -->
 
+    <!-- inject:js -->
     <!-- Bootstrapping -->
     <script src="/app/app.js"></script>
     <script src="/app/config.js"></script>
@@ -73,5 +80,6 @@
     <script src="/app/services/authInterceptor.js"></script>
     <script src="/app/services/datacontext.js"></script>
     <script src="/app/services/directives.js"></script>
+    <!-- endinject -->
 </body>
 </html>

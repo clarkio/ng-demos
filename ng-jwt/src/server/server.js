@@ -12,6 +12,8 @@ var express      = require('express'),
     port         = process.env.PORT || 7171,
     routes       = require('./routes');
 
+var pkg = require('./../../package.json');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(compress()); // Compress response data with gzip
@@ -20,7 +22,8 @@ app.use(logger('dev')); // logger
 app.use(cors());          // enable ALL CORS requests
 app.use(errorHandler.init);
 console.log('** DEV **');
-app.use('/', express.static('./src/client'));
+
+app.use('/', express.static(pkg.paths.client));
 app.use('/', express.static('./'));
 
 auth.init(app);
