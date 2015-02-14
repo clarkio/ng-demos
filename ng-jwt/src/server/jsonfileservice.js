@@ -5,14 +5,14 @@ module.exports = (function(){
     return service;
 
     function getJsonFromFile(file){
-        var fs = require("fs");
+        var fs = require('fs');
         var json;
 
         json = getConfig(file);
         return json;
 
         function readJsonFileSync(filepath, encoding){
-            if (typeof (encoding) == 'undefined'){
+            if (typeof (encoding) === 'undefined'){
                 encoding = 'utf8';
             }
             var file = fs.readFileSync(filepath, encoding);
