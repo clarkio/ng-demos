@@ -29,7 +29,7 @@ app.use('/', express.static('./'));
 auth.init(app);
 routes.init(app);
 
-if(isDev){
+if (isDev) {
     app.get('/ping', function(req, res, next) {
         console.log(req.body);
         res.send('pong');
@@ -38,9 +38,7 @@ if(isDev){
 
 var server = http.createServer(app);
 
-server.listen(port, function(){
+server.listen(port, function () {
     console.log('Express server listening on port ' + port);
-    console.log('env = '+ app.get('env') +
-        '\n__dirname = ' + __dirname  +
-        '\nprocess.cwd = ' + process.cwd() );
+    console.log('env = '+ app.get('env'),'__dirname = ' + __dirname, 'process.cwd = ' + process.cwd());
 });

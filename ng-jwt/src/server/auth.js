@@ -24,7 +24,7 @@
     function handleUnauth() {
         app.use(function (err, req, res, next) {
             if (err.constructor.name === 'UnauthorizedError') {
-                res.send(401, 'Unauthorized');
+                res.status(401).send('Unauthorized');
             }
         });
     }
