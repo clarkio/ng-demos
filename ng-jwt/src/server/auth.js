@@ -23,6 +23,8 @@
 
     function handleUnauth() {
         app.use(function (err, req, res, next) {
+            console.log('############## - HERE - ###########');
+            console.log(err);
             if (err.constructor.name === 'UnauthorizedError') {
                 res.status(401).send('Unauthorized');
             }
@@ -39,14 +41,14 @@
     function postAuth (req, res) {
         //TODO validate req.body.username and req.body.password
         //if is invalid, return 401
-        if (!(req.body.username === 'john.papa' && req.body.password === 'secret')) {
-            res.send(401, 'Wrong user or password');
+        if (!(req.body.username === 'clarkio' && req.body.password === 'secret')) {
+            res.status(401).send('Wrong user or password');
             return;
         }
 
         var profile = {
-            firstName: 'John',
-            lastName: 'Papa',
+            firstName: 'Brian',
+            lastName: 'Clark',
             id: 7
         };
 

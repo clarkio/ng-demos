@@ -1,18 +1,20 @@
-<section id="dashboard-view" class="mainbar" data-ng-controller="login as vm">
+<section class="mainbar">
     <section class="matter">
         <div class="container">
-            <span ng-show="vm.isAuthenticated">{{vm.welcome}}</span>
-            <form ng-show="!vm.isAuthenticated" ng-submit="vm.submit()">
-                <input ng-model="vm.user.username" type="text" name="user" placeholder="Username" />
-                <input ng-model="vm.user.password" type="password" name="pass" placeholder="Password" />
-                <input type="submit" value="Login" />
-            </form>
-            <div>{{vm.error}}</div>
-            <div ng-show="vm.isAuthenticated || true">
-                <a ng-click="vm.callRestricted()" href="">Shh, this is private!</a>
-                <br>
-                <div>{{vm.message}}</div>
-                <a ng-click="vm.logout()" href="">Logout</a>
+            <div class="row">
+                <div class="widget wblue">
+                    <div data-cc-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content user">
+                        <form data-ng-show="!vm.isAuthenticated" data-ng-submit="vm.login()">
+                            <input data-ng-model="vm.username" placeholder="Username" type="text"/>
+                            <input data-ng-model="vm.password" placeholder="Password" type="password"/>
+                            <input type="submit" value="Login" />
+                        </form>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -84,7 +84,7 @@
     "client": "./src/client/",
     "server": "./src/server/",
     "api": "/api",
-    "data": "/../../data/",
+    "data": "/../../src/server/data/",
     "test": "./src/client/test/",
     "html": "./src/client/**/*.html",
     "htmltemplates": "./src/client/app/**/*.html",

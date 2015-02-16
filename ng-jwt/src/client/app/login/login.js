@@ -1,31 +1,36 @@
-(function () {
+(function() {
     'use strict';
 
-    var controllerId = 'login';
+    angular
+        .module('app.login')
+        .controller('Login', Login);
 
-    angular.module('app')
-        .controller(controllerId, ['$http', '$window', login]);
-
-    function login($http, $window) {
+    /* @ngInject */
+    function Login($http, $window) {
+        /*jshint validthis: true */
         var vm = this;
-
-        vm.activate = activate;
+        vm.login = [];
+        vm.title = 'Login';
+        vm.username = 'clarkio';
+        vm.password = 'secret';
         vm.isAuthenticated = false;
-        vm.callRestricted = callRestricted;
-        vm.logout = logout;
-        vm.message = '';
-        vm.submit = submit;
-        vm.user = {username: 'john.papa', password: 'secret'};
-        vm.welcome = '';
-
+        vm.login = login;
+        vm.welcome = 'You are not authenticated yet';
+        vm.error;
+        
         activate();
 
         function activate() {
         }
-
-        function submit() {
+        
+        function login () {
+            var user = {
+                username: vm.username,
+                password: vm.password
+            };
+            
             $http
-                .post('/authenticate', vm.user)
+                .post('/authenticate', user)
                 .success(function (data, status, headers, config) {
                     $window.sessionStorage.token = data.token;
                     vm.isAuthenticated = true;
@@ -43,25 +48,7 @@
                     vm.welcome = '';
                 });
         }
-
-        function logout() {
-            vm.welcome = '';
-            vm.message = '';
-            vm.isAuthenticated = false;
-            delete $window.sessionStorage.token;
-        };
-
-        function callRestricted () {
-            $http({url: '/api/restricted', method: 'GET'})
-                .success(function (data, status, headers, config) {
-                    vm.message = vm.message + ' ' + data.name; // Should log 'foo'
-                })
-                .error(function (data, status, headers, config) {
-                    //toastr.error('failed: ' + data);
-                    //interceptor is handling the alert
-                });
-        }
-
+        
         //this is used to parse the profile
         function url_base64_decode(str) {
             var output = str.replace('-', '+').replace('_', '/');

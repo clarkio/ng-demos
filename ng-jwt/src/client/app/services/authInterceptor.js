@@ -1,10 +1,11 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app');
+    angular
+        .module('app.core')
+        .factory('authInterceptor', authInterceptor);
 
-    app.factory('authInterceptor', ['$rootScope', '$q', '$window', 'toastr', authInterceptor]);
-
+    /* @ngInject */
     function authInterceptor($rootScope, $q, $window, toastr) {
         return {
             request: function (config) {
@@ -26,7 +27,9 @@
         };
     }
 
-    app.config(function ($httpProvider) {
-        $httpProvider.interceptors.push('authInterceptor');
-    });
+    angular
+        .module('app.core')
+        .config(function ($httpProvider) {
+            $httpProvider.interceptors.push('authInterceptor');
+        });
 })();
